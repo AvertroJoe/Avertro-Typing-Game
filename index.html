@@ -445,6 +445,41 @@
     .card { padding: 18px 18px; }
     .timer { font-size: 30px; }
   }
+
+  /* Large screens - monitor/TV at a show: leaderboard on the left,
+     sentence + typing on the right, side by side instead of stacked. */
+  @media (min-width: 1100px) {
+    main {
+      max-width: 1440px;
+      display: grid;
+      grid-template-columns: minmax(360px, 480px) 1fr;
+      grid-template-areas:
+        "hero         hero"
+        "subtitle     subtitle"
+        "description  description"
+        "leaderboard  sentence"
+        "leaderboard  typing";
+      column-gap: 36px;
+      row-gap: 20px;
+    }
+    main > h1.hero { grid-area: hero; align-self: start; }
+    main > p.subtitle { grid-area: subtitle; margin-bottom: 8px; align-self: start; }
+    main > .card.leaderboard {
+      grid-area: leaderboard;
+      display: flex;
+      flex-direction: column;
+    }
+    main > .card.leaderboard table { margin-top: 4px; }
+    main > .card.description { grid-area: description; }
+    main > .card.sentence-card { grid-area: sentence; }
+    main > .card.typing-card { grid-area: typing; }
+
+    /* A bit more size on the things people read from a distance */
+    .target-display { font-size: 34px; padding: 28px 30px; }
+    #typingInput { font-size: 26px; }
+    .timer { font-size: 52px; }
+    .leaderboard th, .leaderboard td { font-size: 17px; padding: 14px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -465,12 +500,12 @@
     <div class="prize">Prize: win a Corne mechanical split keyboard — one given away each day of the show.</div>
   </section>
 
-  <section class="card">
+  <section class="card sentence-card">
     <h2>The sentence</h2>
     <div id="targetDisplay" class="target-display" aria-label="Target sentence to type"></div>
   </section>
 
-  <section class="card">
+  <section class="card typing-card">
     <h2>Your turn</h2>
     <div class="input-row">
       <textarea id="typingInput" rows="2" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Start typing here..."></textarea>
