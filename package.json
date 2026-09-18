@@ -1,0 +1,15 @@
+{
+  "name": "avertro-typing-game",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Avertro Typing Challenge - single-file browser game",
+  "scripts": {
+    "check:syntax": "node scripts/check-js-syntax.js index.html",
+    "check:html": "html-validate index.html",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "html-validate": "^8.24.0"
+  }
+}
