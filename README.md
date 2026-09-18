@@ -12,9 +12,13 @@ Everything — markup, styles and logic — lives in `index.html`. There's nothi
 4. The leaderboard keeps the fastest 10 times, with the most recent entry highlighted.
 5. **Reset** clears the current attempt so the next person can go.
 
+## Screen layout
+
+On a wide screen (1100px or more — e.g. the monitor or TV running the stand) the game switches to a two-column layout: the leaderboard sits on the left, and the sentence and typing box sit on the right, so everything stays readable from a distance. On narrower screens (laptops, tablets) everything stacks into a single column instead. This is a CSS breakpoint that responds automatically to whatever screen the game is opened on — there's nothing to configure.
+
 ## Data storage
 
-The leaderboard and any custom target sentence are stored in the browser's `localStorage`, keyed as `avertro_typing_leaderboard_v1` and `avertro_typing_target_v1`. This means:
+The leaderboard, any custom target sentence and the chosen colour theme are stored in the browser's `localStorage`, keyed as `avertro_typing_leaderboard_v1`, `avertro_typing_target_v1` and `avertro_typing_theme_v1`. This means:
 
 - Scores persist between page reloads on the same device/browser.
 - They do **not** sync across devices — each laptop/tablet running the game keeps its own leaderboard.
@@ -30,6 +34,7 @@ Once unlocked, the admin panel lets you:
 
 - **Change the target sentence** — edit the text visitors have to type, then "Save target text". Use "Restore default" to go back to the standard sentence.
 - **Download the leaderboard as CSV** — exports every recorded time (not just the top 10 shown on screen) as a CSV file with columns Rank, Name, Time (s) and Recorded at. The file downloads as `Typing Game - YYYY-MM-DD.csv`, dated to the day you download it.
+- **Switch between light and dark mode** — under "Appearance", pick whichever suits the room lighting or your own preference. This is a manual, per-device choice (it doesn't follow the visitor's system settings), so you set it once for the show laptop or monitor and it stays that way until someone changes it again.
 - **Change the admin password** — set a new password (minimum 4 characters, entered twice to confirm). This overwrites the default password on that device only, so if you change it on the show laptop, that laptop needs the new password from then on, while any other device still opens with `avertro2026` (or whatever it was last set to on that device). There is no recovery screen if you forget it, so note it down somewhere before you set it.
 - **Clear the leaderboard** — wipes all recorded times on that device. This cannot be undone, so use it deliberately (e.g. between show days, or if the board fills up with test runs). Download a CSV first if you want to keep a record.
 
